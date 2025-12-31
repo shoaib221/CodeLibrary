@@ -1,9 +1,6 @@
 # 📚 Code Library
 
-Code Library is a personal knowledge base where I store and organize my learnings across programming, computer science, and software development.  
-It serves as a reference hub for algorithms, data structures, language concepts, and technical notes collected over time.
-
-This repository includes everything from algorithm implementations to JavaScript modules, from math notes to SQL queries.
+Code Library is a personal knowledge base where I store and organize my learnings across programming, computer science, and software development. It serves as a reference hub for algorithms, data structures, language concepts, and technical notes collected over time. This repository includes everything from algorithm implementations to JavaScript modules, from math notes to SQL queries.
 
 ---
 
