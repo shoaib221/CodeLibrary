@@ -32,4 +32,3 @@ The repository covers a wide range of topics, including but not limited to:
 - Python
 - JavaScript
 - SQL
-- (and other tools or languages as needed)
