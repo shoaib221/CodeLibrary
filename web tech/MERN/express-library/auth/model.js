@@ -1,5 +1,6 @@
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import { type } from 'os';
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -19,8 +20,26 @@ const UserSchema = new mongoose.Schema({
     },
     photo: {
         type: String
+    },
+    role : {
+        type: String,
+        required: true,
+        default: "student"
     }
 });
 
-const User = mongoose.model("User", UserSchema);
-module.exports = { User }
+export const User = mongoose.model("User", UserSchema);
+
+
+const CountSchema  = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    count : {
+        type: Number,
+        required: true
+    }
+})
+
+export const Count = mongoose.model("Count", CountSchema)

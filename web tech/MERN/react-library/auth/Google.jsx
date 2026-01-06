@@ -15,7 +15,7 @@ const provider = new GoogleAuthProvider();
 
 
 export const GoogleLogin = () => {
-    const { setUser } = useContext(AuthContext);
+    const { setUser, axios } = useContext(AuthContext);
 
 
     const signInWithGoogle = () => {
@@ -25,9 +25,9 @@ export const GoogleLogin = () => {
                 //const credential = GoogleAuthProvider.credentialFromResult(result);
                 //const token = credential.accessToken;
 
-                setUser(result.user);
+                // setUser(result.user);
 
-                console.log(result.user);
+                // console.log(result.user);
 
                 
 
@@ -45,7 +45,7 @@ export const GoogleLogin = () => {
     };
 
     return (
-        <button className='button-1' onClick={signInWithGoogle} style={{ cursor: 'initial' }}  >
+        <button className='button-1234 flex gap-2 w-full cen-hor cursor-pointer' onClick={signInWithGoogle} style={{ cursor: 'initial' }}  >
             <ImGoogle2 />
             Enter With Google
         </button>

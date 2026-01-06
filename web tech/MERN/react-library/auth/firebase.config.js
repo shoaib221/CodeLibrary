@@ -8,12 +8,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FBapiKey,
-  authDomain: import.meta.env.VITE_FBauthDomain,
-  projectId: import.meta.env.VITE_FBprojectId,
-  storageBucket: import.meta.env.VITE_FBstorageBucket,
-  messagingSenderId: import.meta.env.VITE_FBmessagingSenderId,
-  appId: import.meta.env.VITE_FBappId
+	apiKey: import.meta.env.VITE_FBapiKey,
+	authDomain: import.meta.env.VITE_FBauthDomain,
+	projectId: import.meta.env.VITE_FBprojectId,
+	storageBucket: import.meta.env.VITE_FBstorageBucket,
+	messagingSenderId: import.meta.env.VITE_FBmessagingSenderId,
+	appId: import.meta.env.VITE_FBappId
 };
 
 // Initialize Firebase

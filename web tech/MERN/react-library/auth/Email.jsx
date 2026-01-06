@@ -18,8 +18,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 
-const isValidemail = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
-const isValidPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+export const isValidemail = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+export const isValidPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
 
 
@@ -40,11 +40,10 @@ export const EmailLogin = () => {
     }
 
     function Login() {
-        console.log("log in")
+        //console.log("log in")
 
         if (!isValidemail.test(email)) {
             toast.error('Invalid Email')
-
             return;
         }
 
@@ -55,16 +54,14 @@ export const EmailLogin = () => {
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                if (!userCredential.user.emailVerified) {
-                    sendEmailVerification(auth.currentUser).then(() => {
-                        toast.info("Please Check Your Inbox and Verify Email")
-                    })
-                    return
-                }
-
-                setUser(userCredential.user);
-                setLoading(false);
-                navigate(location.state || '/');
+                // if (!userCredential.user.emailVerified) {
+                //     sendEmailVerification(auth.currentUser).then(() => {
+                //         toast.info("Please Check Your Inbox and Verify Email")
+                //     })
+                //     return
+                // }
+                toast.success("logged in")
+                navigate(location.state || '/dashboard');
             })
             .catch((error) => {
 
@@ -75,23 +72,13 @@ export const EmailLogin = () => {
     }
 
 
-
-
-
-
-
     return (
         <div className='flex flex-col justify-center items-center gap-4 w-full' >
-            <div className='text-3xl font-bold text-center' >Log In </div>
-
-
-
+            <div className='text-3xl font-bold text-center text-[var(--color4)]' >Log In </div>
 
             <div className='grid grid-cols-[1fr_2fr] gap-4 w-full' >
-
                 <label className='flex justify-end items-center' >Email</label>
                 <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' />
-
                 <label className='flex justify-end items-center' >Password</label>
                 <div className='relative flex flex-col justify-center items-center' >
                     <input className='w-full' type={eye ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' />
@@ -101,23 +88,22 @@ export const EmailLogin = () => {
                 </div>
             </div>
 
-            <button className='button-1' onClick={Login}  >Login</button>
-
-
-
+            <button className='button-1234 w-full cen-hor' onClick={Login}  >Login</button>
 
         </div>
     )
 
 }
 
+
+
 export const EmailRegister = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [ photo, setPhoto ] = useState('')
-    const [name, setName] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [ photo, setPhoto ] = useState('');
+    const [name, setName] = useState('');
     const [error, setError] = useState('');
-    const [eye, setEye] = useState(false)
+    const [eye, setEye] = useState(false);
 
 
     function Register(event) {
@@ -143,7 +129,7 @@ export const EmailRegister = () => {
                 // console.log( auth.currentUser , user ) same thing
 
                 //console.log( auth.currentUser );
-                sendEmailVerification(auth.currentUser)
+                // sendEmailVerification(auth.currentUser)
 
                 let updation = { displayName: name, photoURL: photo };
 
@@ -165,7 +151,7 @@ export const EmailRegister = () => {
 
     return (
         <div className='w-full' >
-            <div className='text-3xl font-bold text-center' >Register</div>
+            <div className='text-3xl font-bold text-center text-[var(--color4)]' >Register</div>
             <br />
 
             <div className='grid grid-cols-[1fr_2fr] gap-4' >
@@ -189,22 +175,20 @@ export const EmailRegister = () => {
 
             </div>
             <br />
-            <button className='button-1 w-full cen-hor' onClick={Register} >Register</button>
+            <button className='button-1234 w-full cen-hor' onClick={Register} >Register</button>
 
 
         </div>
     )
 }
 
+
+
 export const VerifyEmail = () => {
     const [error, setError] = useState(null);
     const emailref = useRef();
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        //console.log(event.target);
-        //console.log(event.target.email.value);
-    }
+    
 
 
     function PasswordReset(event) {
@@ -238,4 +222,5 @@ export const VerifyEmail = () => {
         <></>
     );
 };
+
 

@@ -20,7 +20,6 @@ input {
     border-radius: 50%;
     background-size: cover;
     background-position: center;
-    border: .5rem solid var(--color4);
 }
 
 .title-1 {

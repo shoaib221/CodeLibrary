@@ -5,73 +5,74 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { SignOut } from '../auth/auth';
 import { AuthContext } from '../auth/context';
 import './Nav.css';
-import { Theme } from './Theme';
+import { DownWindowContext } from './context.jsx';
+import { Breaker } from '../miscel/Breaker.jsx';
+import { FaGraduationCap } from "react-icons/fa6";
 
 
+export const Logo = () => {
+    return (
+        <div className='h-[3rem] text-[var(--color4)] flex gap-2' >
+            <FaGraduationCap className='h-full text-2xl' />
+            <div className='cen-ver font-black' >ScholarStream</div>
+        </div>
+    )
+}
 
 export const Nav = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { user} = useContext(AuthContext)
-    //console.log(location)
-    
+    const { user } = useContext(AuthContext);
+    const { down1, DownWindow, navi, LargeScreenTag } = useContext(DownWindowContext)
+    const [opener1, setOpener1] = useState(false)
 
-    function handleClick(event, path) {
-        event.preventDefault();
-        let nav1 = document.getElementById('home-nav');
-        let nav2 = document.getElementById('app-nav');
-        let nav3 = document.getElementById('install-nav');
-        nav1.classList.remove('marked');
-        nav2.classList.remove('marked');
-        nav3.classList.remove('marked');
-
-        // console.log(event.target , path);
-        event.target.classList.add('marked');
-        navigate(path);
-
+    function Opener1() {
+        setOpener1(prev => !prev)
     }
 
 
-    function Opener1 () {
-        let opener1 = document.getElementById('opener-1');
-        //console.log( opener1.style.display )
-        if(  opener1.style.display === 'none' || !opener1.style.display )
-            opener1.style.display = 'block';
-        else
-            opener1.style.display = 'none'
-    }
-
-    
 
     return (
-        <nav className='flex min-h-[3rem]' >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} >
-                <img src='/logo1.jpg' style={{ height: '2rem' }} />
-                <span style={{ color: 'var(--color4)', fontWeight: '600' }} >SkillUp</span>
-            </div>
+        <nav id='top' className='flex min-h-[3rem] justify-between m-4 items-center' >
+            <Logo/ >
 
-            <div onClick={ () => navigate('/') } style={{ cursor: 'pointer' }} className={ `${location.pathname === '/'? 'hilit-1': ''}` } >Home</div>
+            {/* <div onClick={ () => navigate('/') } style={{ cursor: 'pointer' }} className={ `${location.pathname === '/'? 'hilit-1': ''}` } >Home</div> */}
 
-            { user ? 
-                <button className='button-1 back-image-3' title={user.displayName} onClick={Opener1} style={{ position: 'relative', padding: '2px', height: '2.5rem', width:'2.5rem',
-                    backgroundPosition: 'center', backgroundSize: 'cover', backgroundImage: `url(${user.photoURL})` }}  >
-                    
-                    <div id='opener-1' className='button-1' >
-                        <div onClick={()=> navigate('/profile')} className='button-1' >Profile</div>
-                        <div onClick={ () => navigate('/') } className='button-1' >Home</div>
-                        <Theme />
+
+            {down1 ?
+                <div className='flex justify-center px-6 items-center lg:hidden cursor-pointer' onClick={() => DownWindow(false)} >
+                    Menu
+                </div>
+                :
+                <div className='flex justify-center px-6 items-center lg:hidden cursor-pointer' onClick={() => DownWindow(true)} >
+                    Back
+                </div>
+            }
+
+
+            <LargeScreenTag />
+
+
+
+            {user ?
+                <div className='cursor-pointer h-[3rem] w-[3rem] rounded-full relative bg-cover bg-center z-3' title={user.email} onClick={Opener1} style={{ backgroundImage: `url(${user.photoURL})`, border: '.1rem solid var(--color2)' }}  >
+                    <div  className={`box-shadow-1 bg-(--color4) text-[var(--color1)] absolute flex-col p-2 rounded-xl w-[10rem] right-[0%] top-[105%] z-4 ${opener1 ? "flex" : "hidden"}`} style={{ border: '1px solid var(--color2)' }} >
+                        {/* <div onClick={ ()=> navigate('/profile')} className='p-1 text-center w-full'  >Profile</div>
+                        <Breaker />
+                        <Theme /> */}
+
+                        <div onClick={() => navigate('/dashboard')} className='p-1 text-center w-full'  >Dashboard</div>
+                        <Breaker />
                         <SignOut />
+                        
                     </div>
-                </button> :
-                
-                <button onClick={()=> navigate("/auth")} className='button-1' >
+                </div>
+                :
+                <button onClick={() => navigate("/auth")} className='button-1234' >
                     Login
                 </button>
             }
-            
-            
 
-            
         </nav>
     );
 };

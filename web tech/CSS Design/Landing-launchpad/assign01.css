@@ -1,0 +1,125 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.open-sans-raleway {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.logo {
+    color: #4E47FF;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 50px;
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header .text {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+button {
+    background-color: #4E47FF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+banner {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 100px;
+    align-items: center;
+    gap: 20px;
+}
+
+banner button {
+    width: 200px;
+}
+
+section#action {
+    display: flex;
+    width: 70%;
+    height: 300px;
+    margin-top: 100px;
+    
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img#wc-mini {
+    
+    height: 200px;
+    width: 300px;
+    
+    border-radius: 20px;
+}
+
+section#stat {
+    background-color: rgb(193, 232, 232);
+    width: 80%;
+    align-items: center;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+section#feedback {
+    width: 80%;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.column-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.big-font {
+    color: #4E47FF;
+    font-size: 40px;
+    font-weight: 700;
+}
