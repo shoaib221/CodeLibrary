@@ -1,0 +1,208 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+:root {
+    --color1: black;
+    --color2: white;
+    --color3: rgb(156, 154, 154);
+    --color4: #006747;
+    --color5: #00A63E;
+    --color6: rgba(0, 103, 70, 0.7);
+}
+
+
+html {
+    font-size: 14px;
+    height: 100vh;
+    width: 100vw;
+    min-height: 500px;
+    min-width: 600px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    height: 60px;
+    background-color: var(--color2);
+    align-items: center;
+    padding-left: 60px;
+    padding-right: 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+#banner {
+    height: 200px;
+    background-image: linear-gradient( to right, #013223, #006747, #013223 );
+    width: 100%;
+    color: white;
+}
+
+#nav-logo {
+    background-image: url(./assets/bd-logo.png);
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+}
+
+#red-heart {
+    background-image: url(./assets/heart.png);
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    display: inline-block;
+}
+
+.heart {
+    cursor: pointer;
+
+}
+
+#star {
+    background-image: url(./assets/coin.png);
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    display: inline-block;
+}
+
+
+#central-logo {
+    background-image: url(./assets/logo-dark.png);
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+}
+
+#verse {
+    display: flex; 
+    flex-direction: row-reverse; 
+    margin-left: 60px; 
+    margin-right: 60px; 
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    flex-grow: 1;
+}
+
+#call-history {
+    display: block;
+    min-width: 25%;
+    
+}
+
+.grid-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem;
+    border-bottom: 1px solid var(--color3);
+    border-radius: 1rem;
+    
+}
+
+.grid-card-icon {
+    background-image: url(./assets/emergency.png);
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    background-size: contain;
+}
+
+.call {
+    background-color: var(--color5);
+    color: white;
+    flex-grow: 1;
+    cursor: pointer;
+    padding: .2rem;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+.copy {
+    flex-grow: 1;
+    border: 1px solid var(--color3);
+    color: black;
+    cursor: pointer;
+    padding: .2rem;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+#coin {
+    background-image: url(./assets/coin.png);
+    width: 20px;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.head1 {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: .5rem;
+}
+
+.head2 {
+    margin-bottom: .5rem;
+}
+
+.head11 {
+    font-weight: 700;
+    font-size: .8rem;
+}
+
+.single-call-list {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+
+.btn1 {
+    background-color: var(--color5); 
+    color: var(--color2); 
+    padding: .5rem; 
+    border-radius: 2rem; 
+    min-width: 6rem; 
+    text-align: center;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    html {
+        font-size: 12px;
+    }
+
+
+    #grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+        flex-grow: 1;
+    }
+
+}

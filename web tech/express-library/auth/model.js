@@ -1,6 +1,5 @@
 
 import mongoose from 'mongoose';
-import { type } from 'os';
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -19,7 +18,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
     },
     photo: {
-        type: String
+        type: String,
+        required: true,
+        default: "https://i.ibb.co.com/6cPtkRnW/dummy-avatar.jpg"
     },
     role : {
         type: String,

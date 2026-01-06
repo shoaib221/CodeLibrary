@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+
+
+<body>
+    <nav>
+        <div style="display: flex; justify-content: space-between; gap: .5rem" >
+
+            <img src="./assets/bd-logo.png" style="height: 50px;" >
+            <div style="color: var(--color4); font-weight: 700;" >Emergency <br/> Service </div>
+
+        </div>
+
+        <div style="display: flex; gap: 2rem; align-items: center;" >
+
+            <div style="display: flex;"  >
+                
+                <span id="heart-count" style="font-weight: 700;" >0</span>
+                <img src="./assets/heart.png" style="height: 2rem; padding-left: .2rem;" >
+                
+            </div>
+
+            <div style="display: flex; gap: .2rem;"  >
+                
+                <span id="coin-count" style="font-weight: 700;"  >100</span>
+                <img src="./assets/coin.png" style="height: 2rem;"  >
+                
+            </div>
+
+            <div class="btn1" >
+                <span id="copy-count" >0</span> Copy
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div id="banner" style="font-weight: 700; display: flex; flex-direction: column; justify-content: center; align-items: center;" >
+        <img src="./assets/logo-dark.png" style="height: 5rem;" >
+        <div style="font-size: 2rem; text-align: center;" > Emergency Service Directory </div>
+        <div style="text-align: center;" > Government Emergency Services at Your Fingertip – A Project by Government of the People’s Republic of Bangladesh </div>
+    </div>
+
+    <div  id="verse"   >
+        
+        
+        <div id="call-history" >
+            <div style="display: flex; justify-content: space-between;" >
+                <span style="font-weight: 700; font-size: 1.2rem;" >
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Call History
+                </span>
+                <span onclick="clearHistory()" class="btn1" >Clear</span>
+            </div>
+
+            <div id="call-list" >
+
+            </div>
+        </div>
+
+
+        <div id="grid"   >
+
+            <!-- National Emergency -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > National Emergency Number </div>
+                <div class="head2" > National Emergency </div>
+                
+                <div class="head1" >999</div>
+                <div class="head2" >All</div>
+
+
+                <div style="display: flex; gap: .5rem; margin-top: auto;" >
+                    <div class="copy" onclick="copyText('999')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('National Emergency Number', '999')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Police -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" style="background-image: url(./assets/police.png);" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Police Helpline Number </div>
+                <div class="head2" > Police Helpline </div>
+                
+                <div class="head1" >999</div>
+                <div class="head2" >Police</div>
+
+
+                <div style="display: flex; gap: .5rem; margin-top: auto;" >
+                    <div class="copy" onclick="copyText('999')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Police Helpline Number', '999')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Fire Service -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" style="background-image: url(./assets/fire-service.png);" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Fire Service Number </div>
+                <div class="head2" > Fire Service </div>
+                
+                <div class="head1" >999</div>
+                <div class="head2" >Fire</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('999')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Fire Service Number', '999')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Ambulance  -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" style="background-image: url(./assets/ambulance.png);" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Ambulance Service </div>
+                <div class="head2" > Ambulance </div>
+                
+                <div class="head1" >1994-999999</div>
+                <div class="head2" >Health</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('1994-999999')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Ambulance Service', '1994-999999' )" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Women & Children Helpline -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Women & Children Helpline </div>
+                <div class="head2" > Women & Children Helpline </div>
+                
+                <div class="head1" >109</div>
+                <div class="head2" >Help</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('109')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Women & Children Helpline', '109')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Anti-Corruption -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Anti-Corruption Helpline </div>
+                <div class="head2" > Anti-Corruption </div>
+                
+                <div class="head1" >106</div>
+                <div class="head2" >Govt.</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('106')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Anti-Corruption Helpline', '106')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Electricity -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Electricity Helpline </div>
+                <div class="head2" > Electricity Outage </div>
+                
+                <div class="head1" >16216</div>
+                <div class="head2" >Electricity</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('16216')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Electricity Helpline', '16216')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Brac -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Brac Helpline </div>
+                <div class="head2" > Brac </div>
+                
+                <div class="head1" >16445</div>
+                <div class="head2" >NGO</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('16445')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Brac Helpline', '16445')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Railway -->
+            <div class="grid-card"  >
+                <div style="display: flex; justify-content: space-between;" >
+                    <span class="grid-card-icon" >
+
+                    </span>
+                    <i onclick="heartCount()" class="fa-regular fa-heart heart"></i>
+                </div>
+
+
+                <div class="head1" > Bangladesh Railway Helpline </div>
+                <div class="head2" > Bangladesh Railway </div>
+                
+                <div class="head1" >163</div>
+                <div class="head2" >Travel</div>
+
+
+                <div style="display: flex; gap: .5rem;" >
+                    <div class="copy" onclick="copyText('163')" >
+                        <i class="fa-solid fa-copy"></i>
+                        Copy
+                    </div>
+
+                    <div class="call" onclick="coinCount1('Bangladesh Railway Helpline', '163')" >
+                        <i class="fa-solid fa-phone-volume"></i>
+                        Call
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="./index.js" >  </script>
+</body>
+
+</html>
+
+

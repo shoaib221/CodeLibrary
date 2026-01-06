@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <nav>
+        <div id="mobile-nav" onclick="MobileNav()" >
+            &#9776;
+        </div>
+
+        <div id="mobile-nav-slide" >
+            <div onclick="MobileNav()" class="button-2" > Cancel </div>
+            <div class="button-2" onclick="MobileNav('about')"  >About</div>
+            <div class="button-2" onclick="MobileNav('gallery')"  >Gallery</div>
+            <div class="button-2" onclick="MobileNav('plant')"  >Plant a Tree</div>
+        </div>
+
+        <div>
+            Green Earth
+        </div>
+
+        <div id="pc-nav" >
+            <a href="#about" class="nav-link" >About</a>
+            <a href="#gallery" class="nav-link" >Gallery</a>
+            <a href="#plant" class="nav-link" >Plant a Tree</a>
+        </div>
+
+        <div class="button-1" onclick="document.location='#plant'" >
+            Plant a Tree
+        </div>
+    </nav>
+
+
+    <div id="banner" >
+        <div style="font-weight: 600; text-align: center;" >Plant a Tree, Grow a Future</div>
+        <div style="font-size: 1.3rem; text-align: center;" >Join our mission to plant 1 million trees and make the earth greener for future generations </div>
+        <div class="button-1" style="font-size: 1.3rem;" onclick="document.location='#gallery'"  >Get Involved</div>
+    </div>
+
+
+    <div id="gallery" >
+        <div class="head-1" >Choose Your Trees</div>
+        <div id="mobile-category" style="min-width: 20%;" >
+            <div class="head-2" style="text-align: center;" >Categories</div>
+            <div id="children" >
+                <div  onclick="SelectCategory(999)" class="category-op category-selected category-999" >All Trees</div>
+            </div>
+            
+        </div>
+        <div style="display: flex; gap: 1rem; padding: 1rem; " >
+            <div id="category" style="min-width: 15%;" >
+                <div class="head-2" >Categories</div>
+                <div  onclick="SelectCategory(999)" class="category-op category-selected category-999" >All Trees</div>
+            </div>
+
+
+            <div id="grid-1" >
+
+            </div>
+
+
+            <div id="cart"  >
+                <div class="head-2" > Your Cart </div>
+                <div id='cart-items' ></div>
+                <div style="padding: .5rem; margin-top: 1rem; font-weight: 500;" >
+                    Total: $ <span id="cart-total" >0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" >
+        <div class="head-1" >About The Campaign</div>
+        <div id="about-detail" >
+            <div style="height:15rem; background-image: url(./assets/about.png); background-position: center; background-size: contain; background-repeat: no-repeat; margin-bottom: 2rem;" ></div>
+            <div style="color: var(--color8); display: flex; flex-direction: column; justify-content: center; align-items: center;" > 
+                <div>
+                    Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.
+                    <br><br>
+                <ul style="padding-left: 1rem;" >
+                    <li>Restoration of natural habitats </li>
+                    <li>Improvement of air quality </li>
+                    <li>Support for local communities </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="impact" style="background-color: var(--color6); padding: 2rem; margin-top: 1rem;" >  
+        <div class="head-1" > Our Impact </div>
+        <div id="impacts" >
+            <div style="color: var(--color3); background-color: var(--color1); padding: 1rem; min-width: 15rem; border-radius: .5rem; text-align: center;" >
+                <span style="font-size: 3rem; font-weight: 600;" >500K+</span><br>
+                Trees Planted
+            </div>
+            <div style="color: var(--color3); background-color: var(--color1); padding: 1rem; min-width: 15rem; border-radius: .5rem; text-align: center;" >
+                <span style="font-size: 3rem; font-weight: 600;" >120+</span><br>
+                Communities Supported
+            </div>
+            <div style="color: var(--color3); background-color: var(--color1); padding: 1rem; min-width: 15rem; border-radius: .5rem; text-align: center;" >
+                <span style="font-size: 3rem; font-weight: 600;" >30+</span><br>
+                Countries Reached
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="plant"  >
+        <div class="head-1" > Plant a Tree </div>
+        <div style="display: flex; flex-direction: column; width: 80%; max-width: 30rem; padding: 1rem; gap: 1rem; background-color: var(--color3); border-radius: .5rem;" >
+            <input type="text" style="padding: .5rem; border-radius: .5rem;" id="name" placeholder="Your Name" />
+            <input type="text" style="padding: .5rem; border-radius: .5rem;" id="email" placeholder="Your Email" />
+            <select id="number" style="padding: .5rem; border-radius: .5rem;" >
+                <option value=""  selected>Number Of Tress</option>
+                <option value="10" >10</option>
+                <option value="100" >100</option>
+                <option value="1000" >1000</option>
+            </select>
+            <button onclick="PlantTree()" class="button-1" >Donate Now</button>
+        </div>
+    </div>
+
+    <footer style="background-color: var(--color4); color:  var(--color1); padding: 1rem; text-align: center;" >
+        © 2025 Green Earth. All Rights Reserved.
+    </footer>
+
+    <div id="modal" >
+    <div id="modal-content" >
+        <div class="head-2" ></div>
+        <div class="modal-photo" ></div>
+        <div  >
+            <span style="font-weight: 600;" >Category</span>
+            <span class="modal-cat" ></span>
+        </div>
+        <div  >
+            <span style="font-weight: 600;" >Price $</span>
+            <span class="modal-price" ></span>
+        </div>
+
+        <div  >
+            <span style="font-weight: 600;" >Description</span>
+            <span class="modal-desc" ></span>
+        </div>
+
+        <button class="button-2" onclick="CloseModal()" >Close</button>
+    </div>
+    </div>
+
+    <div id="loading" style="display: none;" >
+        <div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center;" >
+            <div class="loader" >
+
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js" ></script>
+</body>
+</html>
+
