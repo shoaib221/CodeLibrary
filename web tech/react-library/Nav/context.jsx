@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import './context-style.css';
+import './context.css';
 import { motion } from "framer-motion";
 
-export const DownWindowContext = createContext();
+const NavContext = createContext();
+
+export const useNavContext = () => useContext(NavContext)
 
 
-
-
-export const DownWindowProvider = ({ children }) => {
+export const NavProvider = ({ children }) => {
     const [down1, setDown1] = useState(true)
     const navigate = useNavigate()
     const [ navi, selectNavi ] = useState("home")
@@ -65,8 +65,8 @@ export const DownWindowProvider = ({ children }) => {
 
 
     return (
-        <DownWindowContext.Provider value={{ LargeScreenTag, down1, setDown1, DownWindow, DownWindowTag, navi }} >
+        <NavContext.Provider value={{ LargeScreenTag, down1, setDown1, DownWindow, DownWindowTag, navi }} >
             {children}
-        </DownWindowContext.Provider>
+        </NavContext.Provider>
     )
 }

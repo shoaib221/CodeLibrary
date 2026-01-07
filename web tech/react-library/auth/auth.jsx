@@ -1,24 +1,24 @@
 import React, { use, useEffect, useState } from 'react';
-import './auth-style.css';
+import './auth.css';
 import { EmailLogin, EmailRegister } from './Email';
 import { GoogleLogin } from './Google';
 import { GithubLogin } from './Github';
 import { useContext } from 'react';
-import { AuthContext, useAuthContext } from './context';
+import {  useAuthContext } from './context';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Loading } from '../miscel/Loading';
 import { auth } from './firebase.config';
 import { sendPasswordResetEmail, signOut } from 'firebase/auth';
 import { Breaker } from '../miscel/Breaker';
 import { toast } from 'react-toastify';
-import { DownWindowContext } from '../Nav/context';
+import { useNavContext } from '../Nav/context';
 import { ForbiddenAccess } from './RestrictedRoutes.jsx';
 
 const isValidemail = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
 
 
 export const SignOut = () => {
-    const { setUser, user } = useContext(AuthContext);
+    const { setUser, user } = useAuthContext() ;
     const navigate = useNavigate()
 
 

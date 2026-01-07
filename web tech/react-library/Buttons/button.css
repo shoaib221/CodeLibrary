@@ -35,3 +35,33 @@
     color: var(--color1);
     cursor: pointer;
 }
+
+
+.button-a {
+    background-color: var(--color4);
+    color: var(--color1);
+    text-decoration: none;
+    width: 100%;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+.button-a:hover {
+    opacity: 0.8;
+}
+
+
+.button-3 {
+    background-color: var(--color4);
+    color: var(--color1);
+    text-decoration: none;
+    padding: .5rem;
+    border-radius: .5rem;
+    max-width: 7rem;
+    min-width: 7rem;
+    
+}
+
+.button-3:hover {
+    opacity: .8;
+}

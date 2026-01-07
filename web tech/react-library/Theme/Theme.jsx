@@ -52,10 +52,11 @@ export const useTheme = () => {
 
     const ThemeChoice = () => {
         return (
-            <div className='w-100 flex flex-col gap-2' >
+            <div className='w-100 flex flex-row gap-2' >
                 <button onClick={ () => SetTheme('dark') } className='p-2 bg-(--color1) text-(--color2)' >Dark</button>
                 <button onClick={ () => SetTheme('sea') } className='p-2 bg-(--color1) text-(--color2)' >Sea</button>
                 <button onClick={ () => SetTheme('sky') } className='p-2 bg-(--color1) text-(--color2)' >Sky</button>
+                <button onClick={ () => SetTheme('light') } className='p-2 bg-(--color1) text-(--color2)' >Light</button>
             </div>
         )
     }

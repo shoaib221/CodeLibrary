@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { SignOut } from '../auth/auth';
-import { AuthContext } from '../auth/context';
 import './Nav.css';
-import { DownWindowContext } from './context.jsx';
+import { useNavContext } from './context.jsx';
 import { Breaker } from '../miscel/Breaker.jsx';
 import { FaGraduationCap } from "react-icons/fa6";
+import { useTheme } from '../Theme/Theme.jsx';
 
 
 export const Logo = () => {
@@ -20,10 +20,9 @@ export const Logo = () => {
 }
 
 export const Nav = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { user } = useContext(AuthContext);
-    const { down1, DownWindow, navi, LargeScreenTag } = useContext(DownWindowContext)
+    const { ThemeChoice } = useTheme()
+    
+    const { down1, DownWindow, navi, LargeScreenTag } = useNavContext();
     const [opener1, setOpener1] = useState(false)
 
     function Opener1() {
@@ -38,6 +37,7 @@ export const Nav = () => {
 
             {/* <div onClick={ () => navigate('/') } style={{ cursor: 'pointer' }} className={ `${location.pathname === '/'? 'hilit-1': ''}` } >Home</div> */}
 
+            <ThemeChoice />
 
             {down1 ?
                 <div className='flex justify-center px-6 items-center lg:hidden cursor-pointer' onClick={() => DownWindow(false)} >
@@ -54,24 +54,7 @@ export const Nav = () => {
 
 
 
-            {user ?
-                <div className='cursor-pointer h-[3rem] w-[3rem] rounded-full relative bg-cover bg-center z-3' title={user.email} onClick={Opener1} style={{ backgroundImage: `url(${user.photoURL})`, border: '.1rem solid var(--color2)' }}  >
-                    <div  className={`box-shadow-1 bg-(--color4) text-[var(--color1)] absolute flex-col p-2 rounded-xl w-[10rem] right-[0%] top-[105%] z-4 ${opener1 ? "flex" : "hidden"}`} style={{ border: '1px solid var(--color2)' }} >
-                        {/* <div onClick={ ()=> navigate('/profile')} className='p-1 text-center w-full'  >Profile</div>
-                        <Breaker />
-                        <Theme /> */}
-
-                        <div onClick={() => navigate('/dashboard')} className='p-1 text-center w-full'  >Dashboard</div>
-                        <Breaker />
-                        <SignOut />
-                        
-                    </div>
-                </div>
-                :
-                <button onClick={() => navigate("/auth")} className='button-1234' >
-                    Login
-                </button>
-            }
+            
 
         </nav>
     );
