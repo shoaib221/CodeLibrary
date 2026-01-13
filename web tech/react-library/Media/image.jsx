@@ -1,12 +1,12 @@
 import {  useState } from "react";
-import { useAuthContext } from "../auth/context";
+import { useAuthContext } from "../../auth/context";
 import { FaRegSmile } from "react-icons/fa";
 import { GrUploadOption } from "react-icons/gr";
 import axios from "axios";
 
 
 
-export const useMyImage = ({ url = "https://i.ibb.co.com/7tmkDpb6/Screenshot-2026-01-04-224203.png" }) => {
+export const useMyImage = ({ url  }) => {
 
     const {  axiosInstance } = useAuthContext();
     const [photo, setPhoto] = useState(url);
@@ -72,11 +72,16 @@ export const useMyImage = ({ url = "https://i.ibb.co.com/7tmkDpb6/Screenshot-202
 
     const Tag = () => {
         return (
-            <div className="bg-cover bg-center h-60 w-full relative rounded-xl"
+            <div className="bg-cover bg-center h-60 w-full relative rounded-xl mb-4"
                 style={{ backgroundImage: `url(${photo})` }} >
 
-                <div className="absolute rounded-full -bottom-2 right-[45%] bg-(--color1) cursor-pointer" >
-                    <GrUploadOption className="text-3xl cursor-pointer" />
+                { !photo && <div className="flex flex-col items-center justify-center h-full text-(--color1a) bg-black/30" >
+                    <FaRegSmile className="text-5xl mb-2" />
+                    <div>No Photo</div>
+                </div> }
+
+                <div className="absolute p-2 z-20 rounded-full -bottom-5 left-[40%] bg-(--color1) cursor-pointer" >
+                    Upload Photo
                     <input type="file" onChange={imageChange} className="opacity-0 absolute cursor-pointer inset-0 h-full w-full" />
                 </div>
             </div>

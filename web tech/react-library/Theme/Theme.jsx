@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Theme.css'
 
+const ThemeContext =  React.createContext();
+export const useThemeContext = () => React.useContext( ThemeContext );
 
-export const useTheme = () => {
+export const ThemeProvider = ( { children } ) => {
     const [ themeName, setTheme ] = useState("light")
 
     useEffect(() => {
@@ -44,7 +46,7 @@ export const useTheme = () => {
 
         return (
             <button onClick={toggleTheme}   >
-                { themeName }
+                Toggle Theme
             </button>
         )
     }
@@ -63,6 +65,12 @@ export const useTheme = () => {
 
 
 
-    return {  ThemeButton2, toggleTheme, SetTheme, ThemeChoice }
+    const info =  { themeName, ThemeButton2, toggleTheme, SetTheme, ThemeChoice }
+
+    return (
+        <ThemeContext.Provider value={ info } >
+            { children }
+        </ThemeContext.Provider>
+    )
 };
 
