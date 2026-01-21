@@ -26,6 +26,8 @@ export  function Logo11({  userName = "User" }) {
 
     // Close menu when clicking outside
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+
         const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
                 setIsOpen(false);
@@ -77,7 +79,7 @@ export  function Logo11({  userName = "User" }) {
                 />
             </button>
             :
-                <button onClick={ () => router.push('/register') } >Register</button>
+                <button className="font-bold text-(--color4) hover:opacity-70 cursor-pointer" onClick={ () => router.push('/register') } >Register</button>
             }
 
             {/* Dropdown Menu */}

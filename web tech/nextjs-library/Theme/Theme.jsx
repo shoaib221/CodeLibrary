@@ -11,6 +11,8 @@ export const ThemeProvider = ( { children } ) => {
 
 
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+        
         let theme = localStorage.getItem("color-theme");
         if (!theme) return;
         setTheme(theme.toString() );
@@ -19,7 +21,7 @@ export const ThemeProvider = ( { children } ) => {
 
 
     function toggleTheme() {
-        
+        if (typeof window === 'undefined') return;
         
         if (themeName === "light") {
             document.documentElement.setAttribute('color-theme', 'dark');
@@ -32,10 +34,11 @@ export const ThemeProvider = ( { children } ) => {
             setTheme( "light" );
         }
     }
-
     
 
     function SetTheme ( val ) {
+        if (typeof window === 'undefined') return;
+        
         document.documentElement.setAttribute('color-theme', val);
         localStorage.setItem("color-theme", val);
         setTheme( val );
@@ -72,20 +75,5 @@ export const ThemeProvider = ( { children } ) => {
         </ThemeContext.Provider>
     )
 };
-
-
-
-// useEffect(() => {
-
-//         const savedTheme = localStorage.getItem("theme");
-//         const prefersDark = window.matchMedia(
-//             "(prefers-color-scheme: dark)",
-//         ).matches;
-
-//         if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-//             setIsDark(true);
-//             document.documentElement.classList.add("dark");
-//         }
-//     }, []);
 
 

@@ -17,4 +17,36 @@
     border-radius: 10px;
 }
 
+.box-12 {
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.box-12:hover {
+    box-shadow:
+        0 0 .4rem var(--shadow-1),
+        0 0 .8rem var(--shadow-2);
+}
+
+.box-shadow-2 {
+    box-shadow:
+        0 0 .2rem var(--shadow-1),
+        0 0 .5rem var(--shadow-2);
+    
+}
+
+/* bottom shadow */
+.box-shadow-3 {
+    box-shadow: 0 8px 12px -6px var(--shadow-1);
+}
+
+.side-shadow-1 {
+  box-shadow:
+    6px 0 6px -4px var(--shadow-1),
+   -6px 0 6px -4px var(--shadow-1);
+}
+
 

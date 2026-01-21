@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
         console.log("logo", status)
 
         // if( status === 'unauthenticated' ) setProfile(status);
+        // if( status !== 'loading' ) 
         if (status !== 'authenticated') return;
 
 

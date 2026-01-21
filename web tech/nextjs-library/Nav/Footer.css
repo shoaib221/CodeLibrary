@@ -1,0 +1,33 @@
+
+
+.footer-1 {
+    border: none;
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+
+.footer-2 {
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+}
+
+.footer-2:hover {
+    text-decoration: underline;
+}
+
+@media screen and ( max-width: 1024px ) {
+    .footer-1 {
+        cursor: pointer;
+    }
+
+    .footer-1:hover {
+        
+        box-shadow:
+        0 0 .2rem var(--shadow-1),
+        0 0 .5rem var(--shadow-2);
+    }
+}

@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { PasswordInput } from "@/nextjs-library/miscel/password-input.jsx"
-import { GenderInput } from "@/nextjs-library/input/radio";
+import { GenderInput } from "@/nextjs-library/input/radio.jsx";
 import { useDateInput } from "../input/date";
 import axios from "axios";
 

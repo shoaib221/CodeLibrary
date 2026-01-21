@@ -14,21 +14,24 @@ const Navcontext = createContext();
 export const useNavContext = () => useContext(Navcontext);
 
 export const NavProvider = ({ children }) => {
-    const { data: session, status } = useSession()
     const [navi, setNavi] = useState('/');
     const [down1, setDown1] = useState(false);
     const router = useRouter();
-    const { profile } = useAuthContext()
-    const [screen, setScreen] = useState({ width: window.innerWidth, height: window.innerHeight });
-
+    const { profile } = useAuthContext();
+    const [screen, setScreen] = useState({ width: 1024, height: 768 });
 
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+
         const handleResize = () => {
             setScreen({
                 width: window.innerWidth,
                 height: window.innerHeight,
             });
         };
+
+        // Set initial screen size on client
+        handleResize();
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -44,7 +47,7 @@ export const NavProvider = ({ children }) => {
     }
 
 
-    const info = { DownWindow, profile, session_status: status, down1, navi, screen } ;
+    const info = { DownWindow, profile,  down1, navi, screen } ;
 
     
     return (

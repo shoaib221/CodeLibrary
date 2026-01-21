@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useNavContext } from "../Nav/context";
 
 const Story = ({ story }) => {
 
@@ -113,33 +114,28 @@ export function Slide13() {
     const slides = [
         {
             id: 1,
-            title: "Mountain Adventure",
-            image:
-                "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop",
+            title: "Get the best quality care for elders",
+            image: "/banner1.jpg",
         },
         {
             id: 2,
-            title: "Ocean Waves",
-            image:
-                "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&h=600&fit=crop",
+            title: "Get the best doctors in the city at your home",
+            image: '/banner2.jpg',
         },
         {
             id: 3,
-            title: "City Lights",
-            image:
-                "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1200&h=600&fit=crop",
+            title: "Get the best nurses at your home",
+            image: '/banner3.jpg',
         },
         {
             id: 4,
-            title: "Forest Path",
-            image:
-                "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=600&fit=crop",
+            title: "Get the most caring baby sitters",
+            image: '/banner4.jpg',
         },
         {
             id: 5,
-            title: "Desert Sunset",
-            image:
-                "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&h=600&fit=crop",
+            title: "Get the most efficient workers ",
+            image: "/banner5.jpg",
         },
     ];
 
@@ -156,8 +152,8 @@ export function Slide13() {
     };
 
     return (
-        <div className="flex flex-col-reverse lg:flex-row gap-1 w-full h-100 p-1 bg-(--color1)">
-            
+        <div className="flex flex-col-reverse lg:flex-row gap-1 w-full h-120 p-1 bg-(--color1)">
+
             {/* pagination */}
             <div className="flex flex-row lg:flex-col gap-4 justify-center">
                 {slides.map((slide, index) => (
@@ -170,7 +166,7 @@ export function Slide13() {
                             }`}
                     >
                         <div
-                            className="w-full h-full bg-cover bg-center"
+                            className="w-full h-full bg-cover bg-top"
                             style={{ backgroundImage: `url(${slide.image})` }}
                         />
                     </button>
@@ -182,7 +178,7 @@ export function Slide13() {
                 {slides.map((slide, index) => (
                     <div
                         key={slide.id}
-                        className={`absolute inset-0 transition-all duration-2000 ${ currentSlide === index 
+                        className={`absolute inset-0 transition-all duration-2000 ${currentSlide === index
                             ? "opacity-100 translate-x-0"
                             : index < currentSlide
                                 ? "opacity-0 -translate-x-full"
@@ -190,12 +186,12 @@ export function Slide13() {
                             }`}
                     >
                         <div
-                            className="w-full h-full bg-cover bg-center"
+                            className="w-full h-full bg-cover bg-top"
                             style={{ backgroundImage: `url(${slide.image})` }}
                         >
                             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-                            <div className="absolute bottom-0 left-0 right-0 p-12">
-                                <h2 className="text-6xl font-bold text-white font-playfair-display">
+                            <div className="absolute bottom-0 left-0 right-0 py-4 px-12">
+                                <h2 className="text-2xl font-bold text-white font-playfair-display">
                                     {slide.title}
                                 </h2>
                             </div>
@@ -203,10 +199,121 @@ export function Slide13() {
                     </div>
                 ))}
 
-                
-                
+
+
             </div>
         </div>
     );
 }
 
+
+const Comment = ({ story }) => {
+
+    return (
+        <div className='flex gap-2 h-72  flex-col justify-between px-2 bg-(--color1) hover:opacity-80 text-(--color2) p-2'  >
+
+            <div className="grow text-justify" >
+                {story.comment}
+            </div>
+
+            <div className="flex gap-2 items-center" >
+                <div className={`w-18 h-18 rounded-full  bg-cover bg-top`} style={{ backgroundImage: `url(${story.image})` }} />
+                <div className="text-sm" >
+                    {story.name} <br />
+                    {story.scholarship} <br />
+                    {story.university}
+                </div>
+            </div>
+
+        </div>
+    )
+}
+
+
+const items = stories;
+
+// horizontal slide, no scroll bar, no auto-slide
+
+
+export const Slide14 = () => {
+    const { screen } = useNavContext()
+    const totalSlides = items?.length;
+    const [index, setIndex] = useState(0);
+    const [ visibleSlides, setVisibleSlides ] = useState(1)
+    const [ maxIndex, setMaxIndex ] = useState( totalSlides - 1 )
+
+    useEffect(() => {
+        setIndex(0)
+        let visible = 1;
+        if( screen.width > 1024 ) visible=4;
+        else if( screen.width > 640 ) visible=2;
+        
+        
+        setVisibleSlides(visible);
+
+        let maxi = totalSlides - visible;
+        setMaxIndex( maxi );
+        
+
+    }, [ screen.width ])
+    
+    
+
+    
+    
+
+    const slideLeft = () => {
+        setIndex(prev => Math.max(prev - 1, 0));
+    };
+
+    const slideRight = () => {
+        setIndex(prev => Math.min(prev + 1, maxIndex));
+    };
+
+    return (
+        <div className="relative w-full flex items-center">
+            {/* Left Button */}
+
+            <div className="absolute right-2 -top-2"  >
+            <button
+                onClick={slideLeft}
+                disabled={index === 0}
+                className="z-10 bg-(--color1) text-(--color2) px-3 py-2 disabled:opacity-20"
+            >
+                ◀
+            </button>
+
+            <button
+                onClick={slideRight}
+                disabled={index === maxIndex}
+                className="z-10 bg-(--color1) text-(--color2) px-3 py-2 disabled:opacity-20"
+            >
+                ▶
+            </button>
+            </div>
+
+            {/* Viewport */}
+            <div className="overflow-hidden w-full mt-6">
+                <div
+                    className="flex transition-transform duration-300 ease-in-out"
+                    style={{
+                        transform: `translateX(-${index * ( 100 / visibleSlides ) }%)`
+                    }}
+                >
+                    {items.map((item, i) => (
+                        <div
+                            key={i}
+                            className={`shrink-0 p-2`} style={{ width: `${ 100 / visibleSlides }%` }}
+                        >
+                            
+                            <Comment story={item} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Right Button */}
+            
+        </div>
+    );
+};

@@ -1,6 +1,6 @@
-
-
 import { useEffect, useState } from "react";
+import './date.css'
+
 
 export function useDateInput() {
     const startYear = 1950;
@@ -97,4 +97,71 @@ export function useDateInput() {
 
         date, DateInput: InputTag
     };
+}
+
+
+export const TimeSpan = ({ set }) => {
+
+    const [time, setTime] = useState(null);
+
+    useEffect(() => {
+
+        async function Do(params) {
+            const now = new Date();
+            setTime({
+                year: now.getFullYear(),
+                month: now.getMonth() + 1,
+                date: now.getDate(),
+                hour: now.getHours(),
+            });
+        }
+
+        Do()
+
+    }, []);
+
+
+
+    useEffect(() => {
+        if (!time) return
+        set(new Date(time.year, time.month - 1, time.date, time.hour))
+    }, [time, set])
+
+    if (!time) return null; // prevents mismatch
+
+    return (
+        <div className='grid grid-cols-[1fr_1fr_1fr_1fr] gap-4 justify-between' >
+            <label >
+                Year <br />
+                <input
+                    value={time.year} onChange={(e) => setTime(prev => { return { ...prev, year: e.target.value } })}
+                    type='number' placeholder='i.g. 2025' className='date-input-a' />
+            </label>
+            
+
+            <label >
+                Month <br />
+                <input
+                    value={time.month} onChange={(e) => setTime(prev => { return { ...prev, month: e.target.value } })}
+                    type='number' placeholder='i.g. 11' className='date-input-a' />
+            </label>
+            
+
+            <label >
+                Date <br />
+                <input
+                    value={time.date} onChange={(e) => setTime(prev => { return { ...prev, date: e.target.value } })}
+                    type='number' placeholder='i.g. 31' className='date-input-a' />
+            </label>
+            
+
+            <label >
+                Hour <br />
+                <input
+                    value={time.hour} onChange={(e) => setTime(prev => { return { ...prev, hour: e.target.value } })}
+                    type='number' placeholder='i.g. 19' className='date-input-a' />
+            </label>
+
+        </div>
+    )
 }

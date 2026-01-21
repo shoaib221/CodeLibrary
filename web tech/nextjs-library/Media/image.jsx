@@ -116,7 +116,7 @@ export const useMyImage = ({ url } = {}   ) => {
     }
 
 
-    return { uploadPhoto: Upload, resetPhoto, PhotoTag: Tag02 }
+    return { uploadPhoto: Upload, resetPhoto, PhotoTag: Tag02, PhotoTag2: Tag01 }
 
 
 }

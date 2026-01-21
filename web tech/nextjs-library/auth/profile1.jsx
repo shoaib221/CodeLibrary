@@ -1,6 +1,6 @@
 "use client"
 
-import { useNavContext } from '@/nextjs-library/Nav/context';
+import { useNavContext } from '@/nextjs-library/Nav/context.jsx';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
@@ -65,14 +65,12 @@ export const Profile11 = () => {
 
     return (
         <div className='grow relative w-full max-w-150 px-8 mx-auto' >
+            <br/>
+            <div className='header-2' >{profile.username}</div>
+
+            <div className='header-1' > {profile.role} </div>
+            <br/>
             
-
-            <div className='text-center text-2xl text-(--color4) font-bold my-4' >
-                {profile.username} <br/>
-                <span className='font-bold text-(--color2) text-[1rem]' > {profile.role} </span>
-            </div>
-
-
             <PhotoTag />
 
 
@@ -147,7 +145,7 @@ export const Profile11 = () => {
             </label>
 
             <br/>
-            <button className='button-4 w-full' onClick={ handleSubmit(Update) } > Update </button>
+            <button className='button-4' onClick={ handleSubmit(Update) } > Update Profile </button>
 
             <br /> <br />
 

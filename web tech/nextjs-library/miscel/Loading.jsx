@@ -27,3 +27,12 @@ export const Loading3 = () => {
         </div>
     );
 }
+
+export const Loading4 = () => {
+
+    return (
+        <div id='loading-4' className="flex w-full h-full items-center justify-center">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+        </div>
+    )
+}

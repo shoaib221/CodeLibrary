@@ -12,7 +12,7 @@ export function ThemeButton11() {
     return (
         <button
             onClick={toggleTheme}
-            className="relative w-14 rounded-full bg-(--color1) text-(--color4) flex items-center justify-center  transition-all duration-300 hover:scale-110 focus:outline-none  overflow-hidden"
+            className="relative w-14 rounded-full bg-(--color1a) text-(--color4) flex items-center justify-center  transition-all duration-300 hover:scale-110 focus:outline-none  overflow-hidden"
             aria-label="Toggle theme"  title='Toggle Theme'
         >
             <div className="relative w-6 h-6">
