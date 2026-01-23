@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
 
             const fullUser = {
                 ...firebaseUser,
-                role: res.data.user.role, // attach role
+                ...res.data.user, // attach role
             };
 
             //console.log("Logged in user:", fullUser);

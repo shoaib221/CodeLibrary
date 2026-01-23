@@ -1,27 +1,26 @@
 import { updateProfile } from "firebase/auth";
 import { auth } from './firebase.config';
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "./context";
+import { useAuthContext } from "./context";
 import { Loading } from "../miscel/Loading";
 import { NotFound } from "../miscel/NotFound";
 import { Navigate, useLocation } from "react-router-dom";
 import { Grid, Phone } from "lucide-react";
 import { toast } from "react-toastify";
-import { PrivateRoute } from "./auth";
-import { DownWindowContext } from '../Nav/context';
+import { PrivateRoute } from "./RestrictedRoutes";
 import { FaRegSmile } from "react-icons/fa";
 import axios from "axios";
 
 
 export const UpdateProfile = () => {
-    const { user, loading, setUser } = useContext(AuthContext);
+    const { user, loading, setUser } = useAuthContext();
     const location = useLocation();
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [number, setNumber] = useState("");
     const [email, setEmail] = useState("");
-    const { axiosInstance } = useContext(AuthContext);
+    const { axiosInstance } = useAuthContext();
 
 
     useEffect(() => {
