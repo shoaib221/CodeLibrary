@@ -56,10 +56,10 @@ const LogIn = ({ toggle }) => {
             <br />
 
             <div>
-                Do not have an account? <span onClick={() => toggle('register')} className='link-1 text-(--color4)' >Register</span>
+                Do not have an account? <span onClick={() => toggle('register')} className='link-1' >Register</span>
             </div>
 
-            <div className='underline cursor-pointer text-(--color4)' onClick={() => toggle("forgot")}  >
+            <div className='underline cursor-pointer' onClick={() => toggle("forgot")}  >
                 Forgot Password?
             </div>
         </div>
@@ -82,10 +82,10 @@ const Register = ({ toggle }) => {
             <br />
 
             <div>
-                Already Have an account? <span onClick={() => toggle('login')} className='link-1 text-(--color4)' >Log In</span>
+                Already Have an account? <span onClick={() => toggle('login')} className='link-1' >Log In</span>
             </div>
 
-            <div className='underline cursor-pointer text-(--color4)' onClick={() => toggle("forgot")}  >
+            <div className='underline cursor-pointer' onClick={() => toggle("forgot")}  >
                 Forgot Password?
             </div>
         </div>
@@ -114,7 +114,7 @@ const ForgotPassword = ({ toggle }) => {
 
     return (
         <div className='box-1 flex flex-col justify-center items-center gap-4 w-full max-w-[500px] bg-white/80' >
-            <div className='text-3xl text-center font-bold text-(--color4)' > Reset Password </div>
+            <div className='text-3xl text-center font-bold' > Reset Password </div>
             <input type='email' placeholder='Type Your Email' value={email}
                 onChange={(e) => setEmail(e.target.value)} className='w-full' />
 
@@ -122,8 +122,8 @@ const ForgotPassword = ({ toggle }) => {
 
             <br />
 
-            <div onClick={() => toggle('login')} className='cursor-pointer underline text-(--color4)' >Login Instead?</div>
-            <div>Do not have an account? <span className='cursor-pointer underline text-(--color4)' onClick={() => toggle('register')} >Register</span> </div>
+            <div onClick={() => toggle('login')} className='cursor-pointer underline' >Login Instead?</div>
+            <div>Do not have an account? <span className='cursor-pointer underline' onClick={() => toggle('register')} >Register</span> </div>
         </div>
     )
 }
@@ -144,7 +144,7 @@ export const Auth = () => {
     if (loading) return <Loading />
 
     return (
-        <div className='p-2 flex-1 flex flex-col h-full  bg-cover bg-center justify-center items-center' style={{ backgroundImage: 'url(/convocation.webp)' }} >
+        <div className='text-black p-2 flex-1 flex flex-col h-full  bg-cover bg-center justify-center items-center' style={{ backgroundImage: 'url(/convocation.webp)' }} >
 
             {login === "login" && <LogIn toggle={setLogin} />}
             {login === "register" && <Register toggle={setLogin} />}

@@ -4,7 +4,7 @@ const Story = ({ story }) => {
 
     return (
         <div className='flex flex-col justify-between px-2 min-w-80 
-                        bg-(--color4) hover:bg-(--color4)/80 text-white p-2'  >
+                        bg-(--color-c4) hover:opacity-80 text-white p-2'  >
 
             <div className="flex-1 text-justify" >
                 {story.comment}
@@ -86,15 +86,13 @@ const stories = [
         image: "https://media.istockphoto.com/id/171299141/photo/englishman.jpg?s=1024x1024&w=is&k=20&c=FtS_bl0R7qNDr4ECv4RFDq895gzplUlM1kWA1Rjmk54=",
         scholarship: "Rhodes Scholarship",
         university: "University of Oxford",
-        comment:
-            "Becoming a Rhodes Scholar pushed me to pursue excellence. Oxford’s intellectual environment encouraged deep reflection, meaningful conversations, and personal development, helping me become a more thoughtful and impactful leader."
+        comment: "Becoming a Rhodes Scholar pushed me to pursue excellence. Oxford’s intellectual environment encouraged deep reflection, meaningful conversations, and personal development, helping me become a more thoughtful and impactful leader."
     }
 ];
 
 
 export const ScrollProduct = () => {
-
-
+    
     return (
 
         <div className='flex overflow-auto h-96 gap-2' >

@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    description : {
+    bio : {
         type: String,
     },
     photo: {
@@ -26,6 +26,15 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: "student"
+    },
+    constact: {
+        type: String,
+    },
+    location: {
+        type: String
+    }, 
+    profession: {
+        type: String
     }
 });
 

@@ -6,7 +6,7 @@ import './Nav.css';
 import { useNavContext } from './context.jsx';
 import { Breaker } from '../miscel/Breaker.jsx';
 import { FaGraduationCap } from "react-icons/fa6";
-import { useThemeContext } from '../Theme/Theme.jsx';
+import { ThemeButton3, useThemeContext } from '../Theme/Theme.jsx';
 import { ProfileLogo1 } from './profile.jsx';
 
 
@@ -21,15 +21,12 @@ export const Logo = () => {
 
 const ScrollToTop = () => {
 
-    
-
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     return (
-        <div title='Back To Top' onClick={ scrollToTop } className='fixed cen-hor text-xl
-        bottom-4 right-4 z-30 h-10 w-10 rounded-full border-2 border-(--color1) bg-(--color4) text-(--color1)' >
+        <div title='Back To Top' onClick={ scrollToTop } className='fixed cen-hor text-xl bottom-4 right-4 z-30 h-10 w-10 rounded-full border-2 border-(--color1) bg-(--color4) text-(--color1)' >
             <IoArrowUpSharp  />
         </div>
     );
@@ -40,6 +37,7 @@ export const Nav = () => {
     const { ThemeChoice } = useThemeContext()
     const { down1, DownWindow, navi, LargeScreenTag } = useNavContext();
     const [opener1, setOpener1] = useState(false)
+    const { user, LogOut } = useAuthContext()
 
     function Opener1() {
         setOpener1(prev => !prev)
@@ -68,16 +66,17 @@ export const Nav = () => {
             <div className={`${down1 ? "hidden" : "flex"} fixed z-30  bg-[var(--color1)]  flex-col items-center top-14 left-0 right-0 bottom-0 p-4 gap-4`}  >
                 <div onClick={() => DownWindow(true, "/")} className={`class-1 ${navi === "home" && "active-navi"}`}  >Home</div>
                 <div onClick={() => DownWindow(true, "/all-scholarships")} className={`class-1 ${navi === "all-scholarships" && "active-navi"}`} >Scholarships</div>
-                <div onClick={() => DownWindow(true, "/dashboard")} className={`class-1 ${navi === "dashboard" && "active-navi"}`} >Dashboard</div>
+                { user && <div onClick={() => DownWindow(true, "/dashboard?board=profile")} className={`class-1 ${navi === "dashboard" && "active-navi"}`} >Dashboard</div>}
             </div>
 
 
             <div className='hidden lg:flex text-[0.9rem]' >
                 <div onClick={() => DownWindow(true, "/")} className={`class-1 ${navi === "home" && "active-navi"}`}  >Home</div>
                 <div onClick={() => DownWindow(true, "/all-scholarships")} className={`class-1 ${navi === "all-scholarships" && "active-navi"}`} >Scholarships</div>
-                <div onClick={() => DownWindow(true, "/dashboard")} className={`class-1 ${navi === "dashboard" && "active-navi"}`} >Dashboard</div>
+                { user && <div onClick={() => DownWindow(true, "/dashboard?board=profile")} className={`class-1 ${navi === "dashboard" && "active-navi"}`} >Dashboard</div> }
             </div>
 
+            
 
             <ProfileLogo1 />
 
@@ -90,6 +89,7 @@ export const Nav = () => {
 
 import { IoArrowUpSharp, IoMailSharp } from "react-icons/io5";
 import { FaGlobe } from "react-icons/fa";
+import { useAuthContext } from '../auth/context';
 
 
 export const Footer = () => {

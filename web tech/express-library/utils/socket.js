@@ -1,43 +1,96 @@
-import dotenv from "dotenv";
-dotenv.config();
 
-import express from "express";
-import cors from "cors";
-import http from "http";
+import { server } from "./starter.js";
 import { Server } from "socket.io";
-import multer from "multer";
 
 
-
-export const app = express();
-app.use(cors());
-app.use(express.json());
-app.use( express.static('uploads') );
-
-export const server = http.createServer(app);
-export const io = new Server( server, {
-	cors: "http://localhost:3000"
-} );
-
-
-export const onlineUserMap = {  };
-export const my_username="" ;
-
-export const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, 'uploads/'); },
-	filename: function (req, file, cb) {
-		cb(null, 'profile-photo' + '-' + req.username+'.jpg'); }
+export const io = new Server(server, {
+	cors: "http://localhost:5173",
+	methods: ["GET", "POST"],
 });
 
-export const multer_upload = multer({ storage: storage });
 
-export const message_photo_upload = multer({ storage: multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, 'uploads/messages/'); },
-	filename: function (req, file, cb) {
-		cb(null,  Date.now()+'-'+file.originalname ); }
+export const onlineUserMap = {};
+export const my_username = "";
 
 
-})  })
+
+
+
+import { User } from "../auth/model.js";
+
+import admin from "firebase-admin";
+
+function run() {
+
+    try {
+        // console.log(process.env.FIREBASE_KEY, '\n');
+        let key = Buffer.from(process.env.FIREBASE_KEY, "base64").toString("utf8");
+        // console.log(key, '\n');
+        let key1 = JSON.parse(key);
+        // console.log( key1, '\n' )
+        
+        admin.initializeApp({
+            credential: admin.credential.cert(key1)
+        });
+    } catch (err) {
+        console.dir(err)
+    }
+
+
+}
+
+run();
+
+export { admin }
+
+// authentication middleware
+io.use(async (socket, next) => {
+	try {
+
+		const token = socket.handshake.auth?.token;
+
+		if (!token) {
+			throw Error("Authentication error");
+		}
+
+		const userInfo = await admin.auth().verifyIdToken(token);
+		if (!userInfo) throw Error("Authentication error");
+
+		const ret = await User.findOne({ username: userInfo.email });
+		if (!ret) throw Error("Authentication error");
+
+		socket.user = ret;
+		next();
+	} catch (err) {
+		next(new Error(err.message));
+	}
+});
+
+
+
+io.on("connection", (socket) => {
+	console.log("User connected:", socket.user.username);
+
+
+
+	socket.on("test", (data) => {
+		console.log("test", socket.user.username)
+		io.emit("test", {
+			sender: socket.user.username,
+			text: data.text,
+			time: new Date().toLocaleTimeString(),
+		});
+	});
+
+
+	socket.on("disconnect", () => {
+		console.log("User disconnected:", socket.user.username);
+	});
+});
+
+
+
+
+
+
 

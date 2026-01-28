@@ -1,3 +1,5 @@
+
+
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState, useRef } from "react";
 import { auth } from "./firebase.config";
@@ -22,11 +24,11 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-
-    // Store interceptor references
+    
+    
     const interceptors = useRef({ req: null, res: null });
 
-    // 🔥 Logout function
+    
     const LogOut = () => {
         signOut(auth)
             .then(() => {
@@ -35,15 +37,15 @@ export const AuthProvider = ({ children }) => {
             .catch((error) => toast.error(error.message));
     };
 
-    // 🔥 Attach interceptors only once per login
+    
     const setupInterceptors = (firebaseUser) => {
-        // Remove old interceptors if exist
+        
         if (interceptors.current.req !== null) {
             axiosInstance.interceptors.request.eject(interceptors.current.req);
             axiosInstance.interceptors.response.eject(interceptors.current.res);
         }
 
-        // REQUEST → Attach token
+        
         interceptors.current.req = axiosInstance.interceptors.request.use(
             (config) => {
                 if (firebaseUser?.accessToken) {
@@ -54,7 +56,7 @@ export const AuthProvider = ({ children }) => {
             (error) => Promise.reject(error)
         );
 
-        // RESPONSE → Handle 401/403
+        
         interceptors.current.res = axiosInstance.interceptors.response.use(
             (response) => response,
             (error) => {
@@ -74,39 +76,39 @@ export const AuthProvider = ({ children }) => {
     const handleUserLogin = async (firebaseUser) => {
         console.log("handle user login")
         if (!firebaseUser) {
-            // Not logged in
+            
             setUser(null);
             setLoading(false);
             return;
         }
 
-        // Setup interceptors first
+        
         setupInterceptors(firebaseUser);
 
         console.log(firebaseUser);
 
         try {
-            // Fetch or create user from backend
+            
             const res = await axiosInstance.post("/auth/fb-register", firebaseUser);
 
             const fullUser = {
                 ...firebaseUser,
-                ...res.data.user, // attach role
+                ...res.data.user, 
             };
 
-            //console.log("Logged in user:", fullUser);
+            
 
             setUser(fullUser);
         } catch (err) {
             console.error(err);
-            //toast.error("Failed to fetch user role");
-            setUser(firebaseUser); // fallback
+            
+            setUser(firebaseUser); 
         } finally {
             setLoading(false);
         }
     };
 
-    // 🔥 Auth state listener
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
             setLoading(true);
