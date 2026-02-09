@@ -1,22 +1,9 @@
 // console.log("server");
 // 
 
-
-
-import { app, server } from "./utils/socket.js";
-
-
-import { admin } from "./auth/firebase_config.js";
+import { app, server } from "./utils/starter.js";
 import mongoose from "mongoose";
-import jwt from 'jsonwebtoken';
-
-
 import { mainRouter } from "./routes.js";
-
-
-
-
-
 
 
 app.use((req, res, next) => {

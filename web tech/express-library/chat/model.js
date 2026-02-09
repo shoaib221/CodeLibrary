@@ -1,8 +1,8 @@
 
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const MessageSchema = new mongoose.Schema({
-
+    
     sender: {
         type: String,
         required: true,
@@ -14,14 +14,20 @@ const MessageSchema = new mongoose.Schema({
     text: {
         type: String
     },
-    media: {
+    audio: {
+        type: String
+    },
+    video: {
+        type: String
+    },
+    image: {
         type: String
     }
     
 }, { timestamps: true } );
 
 
-const Message = mongoose.model('Message', MessageSchema);
+export const Message = mongoose.model('Message', MessageSchema);
 
 
 const GroupSchema  = new mongoose.Schema({
@@ -38,7 +44,7 @@ const GroupSchema  = new mongoose.Schema({
 
 GroupSchema.index( { name: 1, admin: 1  }, { unique: true } )
 
-const Group = mongoose.model("Group", GroupSchema)
+export const Group = mongoose.model("Group", GroupSchema);
 
 const GroupMembersSchema = new mongoose.Schema({
     group_id: {
@@ -67,7 +73,7 @@ const GroupMembersSchema = new mongoose.Schema({
 
 GroupMembersSchema.index( { group_id:1, member:1 }, { unique: true } )
 
-const GroupMembers = mongoose.model("GroupMember", GroupMembersSchema )
+export const GroupMembers = mongoose.model("GroupMember", GroupMembersSchema )
 
 const GroupMessageSchema = new mongoose.Schema({
     group_id: {
@@ -94,7 +100,7 @@ const GroupMessageSchema = new mongoose.Schema({
 })
 
 
-const GroupMessage = mongoose.model("GroupMessage", GroupMessageSchema );
+export const GroupMessage = mongoose.model("GroupMessage", GroupMessageSchema );
 
 
 const StorySchema = new mongoose.Schema({
@@ -113,7 +119,7 @@ const StorySchema = new mongoose.Schema({
 }, { timestamps: true } )
 
 
-const Story = mongoose.model("Story", StorySchema );
+export const Story = mongoose.model("Story", StorySchema );
 
 
-module.exports = { Message, Group, GroupMessage, GroupMembers, Story };
+

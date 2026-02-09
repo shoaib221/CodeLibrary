@@ -35,8 +35,6 @@ function run() {
     } catch (err) {
         console.dir(err)
     }
-
-
 }
 
 run();
@@ -70,7 +68,10 @@ io.use(async (socket, next) => {
 
 io.on("connection", (socket) => {
 	console.log("User connected:", socket.user.username);
+	onlineUserMap[ socket.user.username ] = socket.id;
 
+	console.log( onlineUserMap )
+	io.emit( 'online-users', {onlineUserMap} );
 
 
 	socket.on("test", (data) => {
