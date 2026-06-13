@@ -1,0 +1,32 @@
+[
+    {
+        "id": "2",
+        "name": "Product 2",
+        "price": 19.99
+    },
+    {
+        "id": "3",
+        "name": "Product 3",
+        "price": 5.99
+    },
+    {
+        "name": "Bike",
+        "price": 1000,
+        "validity": 10,
+        "made_in": "Bangladesh"
+    },
+    {
+        "id": "1778481638057",
+        "name": "Bike",
+        "price": 1000,
+        "validity": 10,
+        "made_in": "Bangladesh"
+    },
+    {
+        "id": "1778481690613",
+        "name": "Bike",
+        "price": 1000,
+        "validity": 10,
+        "made_in": "Bangladesh"
+    }
+]
